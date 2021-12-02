@@ -1,0 +1,34 @@
+ul.inline {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+ul.inline li {
+  display: inline-block;
+  width: 6.125rem;
+  text-align: center;
+  border: solid 1px #d6d6d6;
+  border-radius: 0.125rem;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #606060;
+  font-family: Roboto;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.75;
+  letter-spacing: normal;
+}
+
+ul.inline li.selected {
+  border: 2px solid #1797ff;
+  color: #1797ff;
+}
+
+.tab {
+  width: 100%;
+  padding-top: 25px;
+}
