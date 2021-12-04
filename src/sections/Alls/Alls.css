@@ -3,3 +3,59 @@
   text-align: center;
   color: #1797ff;
 }
+
+.selector {
+  width: 250px;
+}
+#selectField {
+  width: 100%;
+  padding: 5px 12px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  border: solid 1px #2e2e2e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+#selectField p {
+  margin: 0;
+  padding: 0;
+}
+#selectField img {
+  width: 12px;
+}
+
+#list {
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 2px 2px 0 #dad8d8;
+  padding: 0;
+  margin: 0;
+}
+
+.options {
+  width: 100%;
+  padding: 15px 0 15px 70px;
+  list-style: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  position: relative;
+}
+.options p {
+  margin: 0;
+  padding: 0;
+}
+.options img {
+  /* width: 25px; */
+  position: absolute;
+  top: 12px;
+  left: 25px;
+}
+
+.options:hover {
+  background-color: #eaeaea;
+}
