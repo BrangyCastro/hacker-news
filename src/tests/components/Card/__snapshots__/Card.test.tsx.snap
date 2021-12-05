@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card tests should be displayed correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-body"
+  >
+    <a
+      href="hjadshjsd"
+      rel="noreferrer"
+      target="_blank"
+    >
+      <div
+        className="time"
+      >
+        <img
+          alt=""
+          src="time.png"
+        />
+        <span>
+          4 days ago
+           by 
+          brangycastro
+        </span>
+      </div>
+      <h1>
+        Test notice
+      </h1>
+    </a>
+  </div>
+  <div
+    className="card-button"
+  >
+    <img
+      alt=""
+      id="delete"
+      onClick={[Function]}
+      src="favorite.png"
+    />
+  </div>
+</div>
+`;

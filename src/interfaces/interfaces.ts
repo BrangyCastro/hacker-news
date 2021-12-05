@@ -11,3 +11,8 @@ export interface Options {
   value: string;
   icon: string;
 }
+
+export interface TabsOptions {
+  title: string;
+  component: React.ReactElement;
+}

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs tests should be displayed correctly 1`] = `
+<div>
+  <ul
+    className="inline"
+  >
+    <li
+      className="selected"
+      key="0"
+      onClick={[Function]}
+    >
+      Alls
+    </li>
+    <li
+      className=""
+      key="1"
+      onClick={[Function]}
+    >
+      My Faves
+    </li>
+  </ul>
+  <div
+    className="tab"
+  >
+    Array [
+      <div
+        className="selector"
+      >
+        <div
+          id="selectField"
+          onClick={[Function]}
+        >
+          <p>
+            Select your news
+          </p>
+          <img
+            alt=""
+            className=""
+            src="arrow.png"
+          />
+        </div>
+      </div>,
+      <h1
+        className="loading"
+      >
+        Loading news...
+      </h1>,
+    ]
+  </div>
+</div>
+`;

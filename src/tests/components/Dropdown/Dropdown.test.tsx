@@ -16,6 +16,13 @@ describe("Dropdown tests", () => {
 
   test("should be displayed correctly", () => {
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find("ul").exists()).toBe(false);
+  });
+
+  test("should show that the dropdows was deployed ", () => {
+    wrapper.find("#selectField").simulate("click");
+    expect(wrapper.find("ul").exists()).toBe(true);
+    wrapper.find("#selectField").simulate("click");
   });
 
   test("should be three options", () => {

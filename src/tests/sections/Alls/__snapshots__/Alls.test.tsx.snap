@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test section alls news should display correctly without news 1`] = `
+<Fragment>
+  <Dropdown
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "icon": "angular.png",
+          "label": "Angular",
+          "value": "Angular",
+        },
+        Object {
+          "icon": "reactjs.png",
+          "label": "Reactjs",
+          "value": "Reactjs",
+        },
+        Object {
+          "icon": "vuejs.png",
+          "label": "Vuejs",
+          "value": "Vuejs",
+        },
+      ]
+    }
+    placeholder="Select your news"
+  />
+  <h1
+    className="loading"
+  >
+    Loading news...
+  </h1>
+</Fragment>
+`;

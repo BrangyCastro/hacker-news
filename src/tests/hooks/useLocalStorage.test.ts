@@ -36,17 +36,17 @@ describe("Test useLocalStorage", () => {
   });
 
   test("should remove an element from localStorage", () => {
-    const { result } = renderHook(() => useLocalStorage("favorite", dataNews));
+    const { result } = renderHook(() => useLocalStorage("fave", dataNews));
     const [value, , , remove] = result.current;
     act(() => {
       remove(value[0].story_id);
     });
-    const storage = JSON.parse(localStorage.getItem("favorite") || "");
+    const storage = JSON.parse(localStorage.getItem("fave") || "");
     expect(storage.length).toBe(dataNews.length - 1);
   });
 
   test("should look for an element of the localStorage", () => {
-    const { result } = renderHook(() => useLocalStorage("favorite", dataNews));
+    const { result } = renderHook(() => useLocalStorage("fave", dataNews));
     const [value, , find] = result.current;
     let findValue;
     act(() => {

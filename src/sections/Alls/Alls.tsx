@@ -31,7 +31,7 @@ export const Alls = () => {
   const [data, setData] = useState({
     news: [],
     page: 0,
-    loadingFilter: false,
+    loadingFilter: true,
   });
 
   const [storage] = useLocalStorage("fave", []);

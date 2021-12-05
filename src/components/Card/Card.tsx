@@ -79,9 +79,15 @@ export const Card = ({ news, value, deleteFavorite }: Props) => {
       </div>
       <div className="card-button">
         {deleteFavorite ? (
-          <img src={Favorite} alt="" onClick={() => deleteFavorite(story_id)} />
+          <img
+            id="delete"
+            src={Favorite}
+            alt=""
+            onClick={() => deleteFavorite(story_id)}
+          />
         ) : (
           <img
+            id="add"
             src={isFavorite ? Favorite : NotFavorite}
             alt=""
             onClick={handleFavorite}

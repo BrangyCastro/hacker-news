@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const searchNews = async (query?: string, page?: number) => {
+export const searchNews = async (query: string = "", page: number = 0) => {
   const url = `https://hn.algolia.com/api/v1/search_by_date?query=${query?.toLocaleLowerCase()}&page=${page}`;
 
   try {
