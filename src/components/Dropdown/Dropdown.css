@@ -59,3 +59,7 @@
 .rotate {
   transform: rotate(180deg);
 }
+
+.is-Selected {
+  background-color: #eaeaea;
+}

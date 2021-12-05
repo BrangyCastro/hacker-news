@@ -6,18 +6,18 @@ import { Options } from "../../interfaces/interfaces";
 import "./Dropdown.css";
 
 interface Props {
+  placeholder: string;
   options: Options[];
   onChange?: (filter: string) => void;
 }
 
-export const Dropdown = ({ options, onChange }: Props) => {
+export const Dropdown = ({ options, onChange, placeholder }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [storage, setStorage] = useLocalStorage("lastFilter", "");
 
   const toggling = () => setIsOpen(!isOpen);
 
   const onOptionClicked = (value: string) => () => {
-    localStorage.setItem("lastFilter", JSON.stringify(value));
     setIsOpen(false);
     onChange && onChange(value);
     setStorage(value);
@@ -26,7 +26,7 @@ export const Dropdown = ({ options, onChange }: Props) => {
   return (
     <div className="selector">
       <div id="selectField" onClick={toggling}>
-        <p>{storage || "Select your news"}</p>
+        <p>{storage || placeholder}</p>
         <img src={Arrow} alt="" className={`${isOpen ? "rotate" : ""}`} />
       </div>
       {isOpen && (
@@ -34,7 +34,9 @@ export const Dropdown = ({ options, onChange }: Props) => {
           {options.map((option, index) => (
             <li
               key={index}
-              className="options"
+              className={`options ${
+                storage === option.value ? "is-Selected" : ""
+              }`}
               onClick={onOptionClicked(option.value)}
             >
               <img src={option.icon} alt="" />

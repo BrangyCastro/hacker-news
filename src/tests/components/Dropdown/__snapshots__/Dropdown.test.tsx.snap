@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown tests should be displayed correctly 1`] = `
+<div
+  className="selector"
+>
+  <div
+    id="selectField"
+    onClick={[Function]}
+  >
+    <p>
+      Select your news
+    </p>
+    <img
+      alt=""
+      className=""
+      src="arrow.png"
+    />
+  </div>
+</div>
+`;
