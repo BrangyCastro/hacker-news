@@ -68,3 +68,9 @@
   color: red;
   cursor: pointer;
 }
+
+@media (max-width: 991px) {
+  .card:hover {
+    opacity: 1;
+  }
+}

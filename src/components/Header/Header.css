@@ -3,7 +3,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  padding: 2.75rem 9.375rem;
+  padding: 44px 150px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,14 +13,14 @@ header {
 }
 
 header .logo {
-  width: 13rem;
+  width: 208px;
 }
 
 @media (max-width: 768px) {
   header {
-    padding: 1.75rem 2rem;
+    padding: 28px 32px;
   }
   header .logo {
-    width: 9rem;
+    width: 144px;
   }
 }

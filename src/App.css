@@ -8,22 +8,22 @@
 
 .wrapper {
   width: 100%;
-  padding: 2.75rem 9.375rem;
+  padding: 44px 150px;
 }
 
 .container {
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.875rem;
+  gap: 30px;
 }
 
 @media (max-width: 991px) {
   .wrapper {
-    padding: 1.75rem 2rem;
+    padding: 30px 32px;
   }
   .container {
     grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
+    gap: 16px;
   }
 }

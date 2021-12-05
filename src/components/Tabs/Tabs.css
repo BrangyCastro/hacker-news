@@ -8,11 +8,11 @@ ul.inline {
 
 ul.inline li {
   display: inline-block;
-  width: 6.125rem;
+  width: 98px;
   text-align: center;
   border: solid 1px #d6d6d6;
-  border-radius: 0.125rem;
-  font-size: 1rem;
+  border-radius: 2px;
+  font-size: 16px;
   cursor: pointer;
   color: #606060;
   font-family: Roboto;
