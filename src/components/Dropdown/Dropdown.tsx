@@ -3,6 +3,8 @@ import Arrow from "../../assets/img/arrow.png";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { Options } from "../../interfaces/interfaces";
 
+import "./Dropdown.css";
+
 interface Props {
   options: Options[];
   onChange?: (filter: string) => void;
@@ -25,7 +27,7 @@ export const Dropdown = ({ options, onChange }: Props) => {
     <div className="selector">
       <div id="selectField" onClick={toggling}>
         <p>{storage || "Select your news"}</p>
-        <img src={Arrow} alt="" />
+        <img src={Arrow} alt="" className={`${isOpen ? "rotate" : ""}`} />
       </div>
       {isOpen && (
         <ul id="list">

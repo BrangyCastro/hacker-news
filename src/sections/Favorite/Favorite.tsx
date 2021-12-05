@@ -1,28 +1,34 @@
-import { useState } from "react";
 import { Card } from "../../components";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 import { News } from "../../interfaces/interfaces";
 
 export const Favorite = () => {
-  const [news, setNews] = useState(
-    JSON.parse(localStorage.getItem("fave") || "[]")
+  const [storage, setStorage, findValue, removeValue] = useLocalStorage(
+    "fave",
+    []
   );
 
-  const removeFave = (story_id: number) => {
-    const oldData = JSON.parse(localStorage.getItem("fave") || "[]");
-    const removeFave = oldData.find((fave: News) => fave.story_id === story_id);
-
-    let index = oldData.indexOf(removeFave);
-    oldData.splice(index, 1);
-    localStorage.setItem("fave", JSON.stringify(oldData));
-    setNews(oldData);
+  const deleteFavorite = (story_id: number) => {
+    removeValue(story_id);
   };
 
   return (
     <div className="container">
-      {news.map((item: News, index: number) => (
-        <Card key={index} news={item} handleFave={removeFave} />
-      ))}
+      {storage.length <= 0 ? (
+        <h1 className="loading">You don't have any favorite news</h1>
+      ) : (
+        <>
+          {storage.map((item: News, index: number) => (
+            <Card
+              key={index}
+              news={item}
+              value={storage}
+              deleteFavorite={deleteFavorite}
+            />
+          ))}
+        </>
+      )}
     </div>
   );
 };

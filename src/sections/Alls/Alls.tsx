@@ -58,10 +58,8 @@ export const Alls = () => {
     loadingFilter: false,
   });
 
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  const [storage, setStorage, findValue] = useLocalStorage("fave", []);
-  const [storageFilter] = useLocalStorage("lastFilter", []);
+  const [storage] = useLocalStorage("fave", []);
+  const [storageFilter] = useLocalStorage("lastFilter", "");
   const [isFetching] = useScroll({
     filter: storageFilter,
     page: data.page + 1,
@@ -89,22 +87,6 @@ export const Alls = () => {
     }));
   };
 
-  const handleFave = (story_id: number, dataNew: News) => {
-    if (story_id === null) {
-      return alert("Esta noticia no cuenta con un story id");
-    }
-    const { status, value } = findValue(story_id);
-    if (status) {
-      let index = storage.indexOf(value);
-      storage.splice(index, 1);
-      setStorage(storage);
-    } else {
-      storage.push(dataNew);
-      setStorage(storage);
-    }
-    setIsFavorite(!isFavorite);
-  };
-
   const onChange = (e: string) => {
     getData(e);
   };
@@ -114,17 +96,12 @@ export const Alls = () => {
       <Dropdown options={options} onChange={onChange} />
 
       {data.loadingFilter ? (
-        <h1 className="loading">Cargadon data</h1>
+        <h1 className="loading">Loading news...</h1>
       ) : (
         <>
           <div className="container">
             {data.news.map((item: News, index: number) => (
-              <Card
-                key={index}
-                news={item}
-                changeFave={isFavorite}
-                handleFave={handleFave}
-              />
+              <Card key={index} news={item} value={storage} />
             ))}
           </div>
           <div className="loading">

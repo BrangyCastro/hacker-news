@@ -1,30 +1,35 @@
 import { useState } from "react";
 
-export const useLocalStorage = (key: string, initialValue: [] | string) => {
-  const [storedValue, setStoredValue] = useState(() => {
-    try {
-      const item = localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      return initialValue;
-    }
-  });
+export function useLocalStorage<T>(key: string, defaultValue?: T) {
+  const getStorageValue = () => {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : defaultValue;
+  };
 
-  const setValue = (value: [] | string) => {
-    setStoredValue(value);
-    localStorage.setItem(key, JSON.stringify(value));
+  const [storedValue, setStoredValue] = useState(getStorageValue);
+
+  const setValue = (value: T) => {
+    const newValue = value instanceof Function ? value(storedValue) : value;
+    localStorage.setItem(key, JSON.stringify(newValue));
+    setStoredValue(newValue);
   };
 
   const findValue = (id: number) => {
     const removeFave = storedValue.find((fave: any) => fave.story_id === id);
     if (!!removeFave) {
-      return {
-        status: true,
-        value: removeFave,
-      };
+      return true;
     }
-    return { status: false };
+    return false;
   };
 
-  return [storedValue, setValue, findValue] as const;
-};
+  const removeValue = (id: number) => {
+    const oldData = getStorageValue();
+    const removeFave = oldData.find((fave: any) => fave.story_id === id);
+
+    let index = oldData.indexOf(removeFave);
+    oldData.splice(index, 1);
+    setValue(oldData);
+  };
+
+  return [storedValue, setValue, findValue, removeValue];
+}

@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
+import moment from "moment";
 import Favorite from "../../assets/img/favorite.png";
 import NotFavorite from "../../assets/img/not-favorite.png";
 import Time from "../../assets/img/time.png";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { News } from "../../interfaces/interfaces";
 
 import "./Card.css";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 interface Props {
   news: News;
-  changeFave?: boolean;
-  handleFave: (story_id: number, dataNew: News) => void;
+  value: any;
+  deleteFavorite?: (story_id: number) => void;
 }
 
-export const Card = ({ news, changeFave, handleFave }: Props) => {
+export const Card = ({ news, value, deleteFavorite }: Props) => {
   const { story_title, created_at, author, story_url, story_id } = news;
   const dataNew = {
     story_title,
@@ -23,9 +24,14 @@ export const Card = ({ news, changeFave, handleFave }: Props) => {
     story_id,
   };
 
+  const [storage, setStorage, findValue, removeValue] = useLocalStorage(
+    "fave",
+    []
+  );
+
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const fave = () => {
+  const changeFavorite = () => {
     const fave = JSON.parse(localStorage.getItem("fave") || "[]");
     const match = fave.find((item: News) => item.story_id === story_id);
 
@@ -37,8 +43,22 @@ export const Card = ({ news, changeFave, handleFave }: Props) => {
   };
 
   useEffect(() => {
-    fave();
-  }, [changeFave]);
+    changeFavorite();
+  }, [isFavorite]);
+
+  const handleFavorite = () => {
+    if (story_id === null) {
+      return alert("This news does not have a STORY_ID");
+    }
+    const status = findValue(story_id);
+    if (status) {
+      removeValue(story_id);
+    } else {
+      value.push(dataNew);
+      setStorage(value);
+    }
+    setIsFavorite(!isFavorite);
+  };
 
   return (
     <div className="card">
@@ -51,18 +71,22 @@ export const Card = ({ news, changeFave, handleFave }: Props) => {
           <div className="time">
             <img src={Time} alt="" />
             <span>
-              {created_at} by {author}
+              {moment(created_at).startOf("hour").fromNow()} by {author}
             </span>
           </div>
           <h1>{story_title}</h1>
         </a>
       </div>
       <div className="card-button">
-        <img
-          src={isFavorite ? Favorite : NotFavorite}
-          alt=""
-          onClick={() => handleFave(story_id, dataNew)}
-        />
+        {deleteFavorite ? (
+          <img src={Favorite} alt="" onClick={() => deleteFavorite(story_id)} />
+        ) : (
+          <img
+            src={isFavorite ? Favorite : NotFavorite}
+            alt=""
+            onClick={handleFavorite}
+          />
+        )}
       </div>
     </div>
   );

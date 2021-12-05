@@ -6,16 +6,6 @@ function App() {
   return (
     <>
       <Header />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
       <div className="wrapper">
         <Tabs>
           <Panel title="Alls">
