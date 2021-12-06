@@ -27,20 +27,24 @@ const options = [
   },
 ];
 
+/**
+ * Component to display all news
+ * @returns
+ */
 export const Alls = () => {
+  // We initialize our status
   const [data, setData] = useState({
     news: [],
     page: 0,
     loadingFilter: true,
   });
 
+  // We call our hook useLocalStorage because the card requires the favorites data stored in the LocalStorage.
   const [storage] = useLocalStorage("fave", []);
+  // We call our hook useLocalStorage to find out if there is a filter stored in the LocalStorage.
   const [storageFilter] = useLocalStorage("lastFilter", "");
-  const [isFetching] = useScroll({
-    filter: storageFilter,
-    page: data.page + 1,
-    setData: setData,
-  });
+  // Hook to perform the infinite scrool
+  const [isFetching, setIsFetching] = useScroll(fetchMoreNews);
 
   useEffect(() => {
     getData(storageFilter);
@@ -49,12 +53,19 @@ export const Alls = () => {
     };
   }, []);
 
+  /**
+   * Function to get the news from the API, this function is only called when the component is rendered for the first time.
+   * @param filter
+   */
   const getData = async (filter: string) => {
+    // Update loadingFilter to true
     setData((old) => ({
       ...old,
       loadingFilter: true,
     }));
+    // The function is executed to obtain the data from the API.
     const resp = await searchNews(filter, data.page);
+    // We update the state data
     setData((old) => ({
       ...old,
       news: resp?.news,
@@ -62,6 +73,21 @@ export const Alls = () => {
       loadingFilter: false,
     }));
   };
+
+  /**
+   * Function to get the news from the API, this function is executed when the infinite scroll is performed.
+   */
+  async function fetchMoreNews() {
+    // The function is executed to obtain the data from the API.
+    const resp = await searchNews(storageFilter, data.page + 1);
+    // We update the state data
+    setData((old) => ({
+      ...old,
+      news: old.news.concat(resp.news),
+      page: resp.page,
+    }));
+    setIsFetching(false);
+  }
 
   const onChange = (e: string) => {
     getData(e);

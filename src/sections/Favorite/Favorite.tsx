@@ -4,9 +4,16 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { News } from "../../interfaces/interfaces";
 
 export const Favorite = () => {
+  // We call our hook useLocalStorage
   const [storage, , , removeValue] = useLocalStorage("fave", []);
 
+  /**
+   * Function to remove the news from the favorites.
+   * @param story_id
+   */
   const deleteFavorite = (story_id: number) => {
+    // Remove from the list of favorites.
+    // This function is provided by the Hook useLocalStorage.
     removeValue(story_id);
   };
 

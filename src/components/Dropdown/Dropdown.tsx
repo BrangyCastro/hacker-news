@@ -11,12 +11,21 @@ interface Props {
   onChange?: (filter: string) => void;
 }
 
+/**
+ * Component for rendering the Dropdown
+ * @param Props
+ * @returns
+ */
+
 export const Dropdown = ({ options, onChange, placeholder }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  // We call our hook useLocalStorage
   const [storage, setStorage] = useLocalStorage("lastFilter", "");
 
+  // Function for opening and closing the Dropdown
   const toggling = () => setIsOpen(!isOpen);
 
+  // Function to select an option
   const onOptionClicked = (value: string) => () => {
     setIsOpen(false);
     onChange && onChange(value);

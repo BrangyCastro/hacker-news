@@ -1,21 +1,15 @@
 import { useEffect, useState } from "react";
-import { searchNews } from "../api/news";
 
-interface Props {
-  filter: string;
-  page: number;
-  setData: React.Dispatch<
-    React.SetStateAction<{
-      news: never[];
-      page: number;
-      loadingFilter: boolean;
-    }>
-  >;
-}
-
-export const useScroll = ({ filter, page, setData }: Props) => {
+/**
+ * The custom hook useScroll
+ * Returns a status value, and a function to update it.
+ * @param callback
+ * @returns
+ */
+export const useScroll = (callback: () => {}) => {
   const [isFetching, setIsFetching] = useState(false);
 
+  // We add an on scroll event listener to the Window object to call a function called handleScroll every time the window scrolls.
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -23,28 +17,23 @@ export const useScroll = ({ filter, page, setData }: Props) => {
 
   useEffect(() => {
     if (!isFetching) return;
-    fetchMoreNews();
+    callback();
   }, [isFetching]);
 
+  /**
+   * Function to detect the bottom of the page.
+   */
   const handleScroll = () => {
+    // Check if the inner height of the Window object, plus the offsettop of the Document object, is different from the scroll height of the document.
     if (
       window.innerHeight + document.documentElement.scrollTop !==
         document.documentElement.offsetHeight ||
       isFetching
     )
       return;
+    // If equal Is Fetching takes the value of true
     setIsFetching(true);
   };
 
-  const fetchMoreNews = async () => {
-    const resp = await searchNews(filter, page);
-    setData((old) => ({
-      ...old,
-      news: old.news.concat(resp.news),
-      page: resp.page,
-    }));
-    setIsFetching(false);
-  };
-
-  return [isFetching] as const;
+  return [isFetching, setIsFetching] as const;
 };

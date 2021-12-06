@@ -8,9 +8,15 @@ interface Props {
   tabs: TabsOptions[];
 }
 
+/**
+ * Component for rendering the Tabs
+ * @param Props
+ * @returns
+ */
 export const Tabs = ({ selected = 0, tabs }: Props) => {
   const [state, setState] = useState(selected);
 
+  // Function to change tabs
   const selectedHandleChange = (index: number) => {
     setState(index);
   };
