@@ -1,13 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test section favorite should display correctly without news 1`] = `
-<div
-  className="container"
->
+<Fragment>
   <h1
     className="loading"
   >
     You don't have any favorite news
   </h1>
-</div>
+</Fragment>
 `;

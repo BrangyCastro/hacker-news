@@ -18,11 +18,11 @@ export const Favorite = () => {
   };
 
   return (
-    <div className="container">
+    <>
       {storage.length <= 0 ? (
         <h1 className="loading">You don't have any favorite news</h1>
       ) : (
-        <>
+        <div className="container">
           {storage.map((item: News, index: number) => (
             <Card
               key={index}
@@ -31,8 +31,8 @@ export const Favorite = () => {
               deleteFavorite={deleteFavorite}
             />
           ))}
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
