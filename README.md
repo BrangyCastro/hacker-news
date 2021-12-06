@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# Front End Developer (Hackers News)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is developed for a technical test.
 
-## Available Scripts
+## FUNCTIONALITY
 
-In the project directory, you can run:
+- The selected filter should persist on the local storage
+- The favorited posts should persist on the local storage
+- The web app is expected to work as a responsive web application
+- When clicking on the row, a new tab should be open with the link of the post
+  (story_url)
+- Clicking on the “like button” should not trigger the opening of the post URL link
+- When hovering on the row, apply opacity to the entire row and its children (texts,
+  icons, like button, etc)
+- Pagination as infinite scroll
 
-### `npm start`
+## Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Application deployed in Netlify
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+https://hacker-news-bc.netlify.app/
 
-### `npm test`
+![Hacker News](./demo.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+- Open a terminal.
+- Clone the repository locally as follow:
+  - `git clone https://github.com/BrangyCastro/hacker-news.git`
+- Go to the project folder:
+  - `cd /hacker-news`
+- Install the project packages:
+  - `npm install`
+- Run the project:
+  - `npm run start`
+- Run tests:
+  - `npm run test`
+- Open the application on your browser:
+  - [Localhost](http://localhost:3000/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- API: [Hackers News public API.](https://hn.algolia.com/api/v1/search_by_date?query=angular&page=0)
+- FrontEnd:
+  - UI: ReactJS.
+- Testing:
+  - Jest.
+  - Enzyme.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Author
 
-### `npm run eject`
+🇪🇨 **Brangy Castro** [Sitio Web](https://brangycastro.netlify.app/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[GitHub](https://github.com/BrangyCastro)
+[Linkedin](https://www.linkedin.com/in/brangycastro/)
+[Twitter](https://twitter.com/BrangyC)
+[Facebook](https://www.facebook.com/brangy.castro/)
+[Behance](https://www.behance.net/brangycastro)
+[Dribbble](https://dribbble.com/BrangyC)
